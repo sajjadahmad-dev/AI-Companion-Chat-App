@@ -1,8 +1,8 @@
 import streamlit as st
 from groq import Groq
 
-# Initialize Groq client with your API key
-client =os.getenv("GROQ_API_KEY")  # Replace with your actual API key
+
+client =os.getenv("GROQ_API_KEY")
 
 # Hardcoded AI Profile (Emma Carter - Friendly)
 ai_profile = {
