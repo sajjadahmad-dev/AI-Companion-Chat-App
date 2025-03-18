@@ -3,10 +3,7 @@ import streamlit as st
 from groq import Groq
 
 
-client =os.getenv("GROQ_API_KEY")
-
-# Initialize Groq client with your API key
-client = Groq("api_key")
+client = Groq(api_key=st.secrets["GROQ_API_KEY"])
 
 # Hardcoded AI Profile (Emma Carter - Friendly)
 ai_profile = {
@@ -48,22 +45,13 @@ def get_ai_response(user_input, chat_history):
 def handle_image_exchange(user_tier):
     if user_tier == "free":
         st.write("**Casual Image (Free Tier)**")
-        try:
-            st.image(ai_profile["images"]["casual"], caption="Casual Image", use_column_width=True)
-        except Exception as e:
-            st.error(f"Failed to load casual image: {e}")
+        st.image(ai_profile["images"]["casual"], caption="Casual Image", use_column_width=True)
         st.warning("Free users can only view 1 casual image. Upgrade to premium for more!")
     elif user_tier == "premium":
         st.write("**Casual Image (Premium Tier)**")
-        try:
-            st.image(ai_profile["images"]["casual"], caption="Casual Image", use_column_width=True)
-        except Exception as e:
-            st.error(f"Failed to load casual image: {e}")
+        st.image(ai_profile["images"]["casual"], caption="Casual Image", use_column_width=True)
         st.write("**Erotic Image (Premium Tier)**")
-        try:
-            st.image(ai_profile["images"]["erotic"], caption="Erotic Image", use_column_width=True)
-        except Exception as e:
-            st.error(f"Failed to load erotic image: {e}")
+        st.image(ai_profile["images"]["erotic"], caption="Erotic Image", use_column_width=True)
 
 # Streamlit app
 def main():
